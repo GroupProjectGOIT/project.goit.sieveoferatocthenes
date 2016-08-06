@@ -1,4 +1,5 @@
 package com.project.goit.sieveoferatosthenes;
+package com.project.goit.sieveoferatosthenes;
 
 import java.util.Arrays;
 
@@ -22,14 +23,16 @@ public class PrimeNumbers {
         boolean[] sieve = new boolean[limit + 1];//Создаем массив длинное предел+1
         // (дабы внем присутвовали все значения до предела).
         Arrays.fill(sieve, true); //Присваеваем всем ячейкам массива значение true.
-        int counter = 0;//Переменная counter для нахождения количества простых чисел.
-        StringBuilder simpleNumbersStringBuilder = new StringBuilder();//StringBuilder для создания строки
+        int counter = 1;//Переменная counter для нахождения количества простых чисел
+        // (Изначально 1 так как четные числа учитываться не будут,
+        // а первое нечетное число 2 уже занесено в список).
+        StringBuilder simpleNumbersStringBuilder = new StringBuilder("2");//StringBuilder для создания строки
         // содержащей все найденные простые числа.
-        for (int i = 2; i <= limit; i++) { //Цикл от 1-го простого чила(2-а) до предела(вводится пользователем).
+        for (int i = 3; i <= limit; i+=2) { //Цикл от 1-го простого чила(2-а) до предела(вводится пользователем).
             if (sieve[i]) {    //Проверка условия, если i-й элемент массива = true(тоесть если число не
                 // вычеркнуто из массива) то тело выполняется.
                 counter++; //Увеличиваем значение counter, так как если условие выполнилось то число простое.
-                simpleNumbersStringBuilder.append(i).append(" ");//Записываем в строку новое число
+                simpleNumbersStringBuilder.append(" ").append(i);//Записываем в строку новое число
                 // отделяя его от предыдущего пробелом.
                 int step = i % 2 == 0 ? i : 2 * i;//Устанавливаем значение шага(для всех нечетных чисел шаг можно
                 // установить как 2i(посути это нужно только для 2-ки так как после нее все четные числа вычеркнутся))
@@ -57,4 +60,3 @@ public class PrimeNumbers {
         System.out.println("Quantity primes in your range = " + primeNumbers.toCharArray().length);
     }
 }
-

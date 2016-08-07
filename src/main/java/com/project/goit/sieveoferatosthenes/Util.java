@@ -17,4 +17,6 @@ public class Util {
         System.out.println("Thank you!!!\nI hope that I help you!:)");
     }
 
+    public static void  toOutputPrimeNumbers(PrimeNumbers sieve){System.out.println(sieve.getSimpleNumbers()[0] + "\n"
+            + sieve.getSimpleNumbers()[1]);}
 }
